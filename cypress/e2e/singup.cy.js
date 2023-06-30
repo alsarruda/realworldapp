@@ -12,9 +12,9 @@ describe('Sign up scenarios',()=>{
         cy.get('a[href="/register"]').click()
         cy.get('main div h1').should('be.visible').should('have.text','Sign up')
         // User must fill the form
-        cy.get('input[name="username"]').type(faker.internet.userName())
-        cy.get('input[name="email"]').type(faker.internet.email())
-        cy.get('input[name="password"]').type(faker.internet.password())
+        cy.get('input[name="username"]').type(faker.internet.userName(),{delay: 0})
+        cy.get('input[name="email"]').type(faker.internet.email(),{delay: 0})
+        cy.get('input[name="password"]').type(faker.internet.password(),{delay: 0})
         cy.contains('button','Sign up').click()
         cy.url({timeout: 60000}).should('eq','http://localhost:5173/')
 
@@ -27,7 +27,7 @@ describe('Sign up scenarios',()=>{
     })
 
     it('Validating wrong email format', ()=>{
-        cy.get('input[name=email]').type('testemail')
+        cy.get('input[name=email]').type('testemail',{delay: 0})
         cy.contains('button','Sign up').click()
         cy.get('input[name=email]').invoke('prop','validationMessage')
         .should((text) =>{
@@ -56,9 +56,9 @@ describe('Sign up scenarios',()=>{
         })
 
         cy.visit('/register')
-        cy.get('input[name=username]').type(name)
-        cy.get('input[name=email]').type(email)
-        cy.get('input[name=password]').type(password)
+        cy.get('input[name=username]').type(name),{delay: 0}
+        cy.get('input[name=email]').type(email,{delay: 0})
+        cy.get('input[name=password]').type(password),{delay: 0}
         cy.contains('button','Sign up').click()
         cy.get('.error-messages').contains('email has already been taken').should('be.visible')
         cy.get('.error-messages').contains('username has already been taken').should('be.visible')
