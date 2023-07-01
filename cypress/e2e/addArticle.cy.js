@@ -8,7 +8,7 @@ describe('User must be able to add a new Article',()=>{
         cy.visit('/login')
         cy.fixture('userFormData').then(ud =>{
             userData = ud
-            title = faker.lorem.sentence(2);
+            title = faker.lorem.sentence(1);
         })
     })
     it('User must add a new article',()=>{
