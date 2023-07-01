@@ -12,9 +12,15 @@ For more information on how to this works with other frontends/backends, head ov
 
 ```bash
 npm install
+npm install cypress --save-dev
 npm run dev
 ```
-
+To run cypress tests
+```bash
+npx cypress run
+or
+yarn cypress run
+```
 To build and start in prod mode:
 
 ```bash
