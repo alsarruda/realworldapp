@@ -11,7 +11,7 @@ describe('User must be able to add a new Article',()=>{
             title = faker.lorem.sentence(2);
         })
     })
-    it('User adds a new article',()=>{
+    it('User must add a new article',()=>{
         cy.login(userData.email,userData.password)
         cy.get('a[href="/editor"]').click()
         cy.get('input[name="title"]').type(title,{delay: 0})
