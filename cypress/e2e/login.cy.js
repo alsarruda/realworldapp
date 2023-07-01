@@ -12,18 +12,12 @@ describe('Home Page',()=>{
     })
     
     context('Login scenarios',()=>{
-        it('User must login', ()=>{
+        it('User must login from Sign in button', ()=>{
             cy.get('.navbar li a[href="/login"]').click()
             cy.login(userData.email,userData.password)
         })
 
-        it('Validating required fields', ()=>{
-            cy.visit('/login')
-            cy.isRequiredField('input[name="email"]')
-            cy.isRequiredField('input[name="password"]')
-        })
-
-        it('User must login from the feed link', ()=>{
+        it('User must login from the feed link button', ()=>{
             cy.contains('a','Sign in to see your Feed').click()
             cy.login(userData.email,userData.password)
         })
@@ -42,6 +36,13 @@ describe('Home Page',()=>{
                 expect(response.status).to.eq(200)
             })
         })
+
+        it('Validating required fields', ()=>{
+            cy.visit('/login')
+            cy.isRequiredField('input[name="email"]')
+            cy.isRequiredField('input[name="password"]')
+        })
+
     })
     context('Logout scenario',()=>{
         it('User must be able to logout',()=>{
